@@ -62,7 +62,11 @@ const LoginModal = ({ isOpen, onClose }) => {
                 handleClose();
             }
         } catch (err) {
-            setError(err.message || 'Authentication failed. Please try again.');
+            if (err.message?.includes('Failed to fetch')) {
+                setError('Network error (Failed to fetch). Please check your internet connection or ensure your Supabase environment variables are correctly set in Netlify.');
+            } else {
+                setError(err.message || 'Authentication failed. Please try again.');
+            }
         } finally {
             setLoading(false);
         }
