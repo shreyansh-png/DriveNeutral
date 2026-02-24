@@ -93,7 +93,11 @@ const ComparisonSection = () => {
                     setAllVehicles(propagateModelImages(mappedData));
                 }
             } catch (err) {
-                setError(err.message);
+                if (err.message?.includes('Failed to fetch')) {
+                    setError('Network error (Failed to fetch). Please ensure your Supabase environment variables are correctly set in Netlify and you have triggered a redeploy.');
+                } else {
+                    setError(err.message);
+                }
             } finally {
                 setLoading(false);
             }
