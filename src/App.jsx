@@ -23,6 +23,8 @@ const Home = () => (
 function App() {
   const [darkMode, setDarkMode] = useState(false); // default light
 
+  const hasConfig = !!(import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY);
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -35,6 +37,11 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white transition-colors duration-300">
+          {!hasConfig && (
+            <div className="fixed top-0 left-0 right-0 z-[100] bg-red-600 text-white text-center py-2 text-sm font-medium">
+              ⚠️ Supabase Configuration Missing! Please add environment variables to Netlify.
+            </div>
+          )}
           <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
           <main className="flex-grow pt-20">
             <Routes>
