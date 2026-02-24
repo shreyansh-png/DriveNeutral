@@ -598,17 +598,6 @@ const ComparisonSection = () => {
                                             <td className="w-48" />
                                         </tr>
 
-                                        {/* Emissions (g/mi) */}
-                                        <tr>
-                                            <td className="w-48 sticky left-0 z-10 bg-slate-50 dark:bg-slate-950 px-4 py-3 text-left text-sm font-semibold text-slate-500 dark:text-slate-400 border-b border-black/5 dark:border-white/5">Emissions (g/mi)</td>
-                                            {selectedVehiclesData.map((car) => (
-                                                <td key={`emissions-${car.id}`} className="w-60 px-4 py-3 border-b border-black/5 dark:border-white/5 text-sm font-bold text-slate-700 dark:text-slate-300 text-center">
-                                                    {car.avg_emissions_gmi ? `${Math.round(car.avg_emissions_gmi)} g/mi` : '0 g/mi'}
-                                                </td>
-                                            ))}
-                                            <td className="w-48" />
-                                        </tr>
-
 
                                     </tbody>
                                 </table>
