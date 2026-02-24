@@ -368,4 +368,4 @@ function computeSustainabilityScore(vehicle) {
     return calculateNutritionScore(emissions);
 }
 
-export { formatINR };
+export { formatINR, computeSustainabilityScore };

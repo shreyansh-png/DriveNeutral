@@ -4,7 +4,18 @@ import { Leaf, Plus, X, Search, Info, Car, Zap, Droplet, LogIn, Lock, IndianRupe
 import { supabase } from '../supabaseClient';
 import { useAuth } from '../context/AuthContext';
 import LoginModal from './LoginModal';
-import { calculateNutritionScore } from '../services/chatflowService';
+import {
+    calculateNutritionScore,
+    computeSustainabilityScore,
+    propagateModelImages
+} from '../services/chatflowService';
+import {
+    CITY_TAX_RATES,
+    DEFAULT_CITY,
+    formatINR,
+    getOnRoadPrice,
+    getStaticPrices,
+} from '../services/pricingService';
 
 /* ── helpers ───────────────────────────────────────── */
 
@@ -27,15 +38,6 @@ const MetricBar = ({ value, max, label, unit, color = 'bg-primary-500' }) => {
         </div>
     );
 };
-
-import {
-    CITY_TAX_RATES,
-    DEFAULT_CITY,
-    formatINR,
-    getOnRoadPrice,
-    getStaticPrices,
-} from '../services/pricingService';
-import { propagateModelImages } from '../services/chatflowService';
 
 /* ── Filter definitions ────────────────────────────── */
 
