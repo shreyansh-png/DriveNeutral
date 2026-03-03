@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Calculator, Shield, AlertTriangle, TrendingDown, Gauge, Leaf, ChevronRight } from 'lucide-react';
+import { BookOpen, Calculator, Shield, TrendingDown, Gauge, Leaf, ChevronRight } from 'lucide-react';
 
 const SectionCard = ({ icon: Icon, title, accent, children }) => (
     <div className="glass-card rounded-2xl p-6 md:p-8 relative overflow-hidden">
@@ -38,21 +38,7 @@ const MetricItem = ({ name, description, formula, formulaDescription }) => (
     </li>
 );
 
-const FallbackCard = ({ number, scenario, scenarioDetail, resolution }) => (
-    <div className="p-4 bg-black/3 dark:bg-white/3 rounded-xl border border-black/5 dark:border-white/5">
-        <div className="flex items-start gap-3">
-            <span className="w-7 h-7 rounded-lg bg-amber-500/15 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-black flex items-center justify-center flex-shrink-0 mt-0.5">{number}</span>
-            <div className="flex-1">
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-1">{scenario}</h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mb-2 leading-relaxed">{scenarioDetail}</p>
-                <div className="flex items-start gap-2 p-3 bg-emerald-50/50 dark:bg-emerald-950/20 rounded-lg border border-emerald-200/30 dark:border-emerald-500/10">
-                    <Shield className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <p className="text-xs text-emerald-700 dark:text-emerald-400 font-medium leading-relaxed">{resolution}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-);
+
 
 const Methodology = () => {
     return (
@@ -194,32 +180,7 @@ const Methodology = () => {
                         </div>
                     </SectionCard>
 
-                    {/* ── 5. Data Fallback Mechanisms ───────────── */}
-                    <SectionCard icon={AlertTriangle} title="Data Fallback Mechanisms" accent="bg-amber-500/10">
-                        <p className="text-slate-500 dark:text-slate-400 text-sm mb-5 leading-relaxed">
-                            Real-world datasets frequently contain missing or anomalous values. To ensure database stability and prevent UI errors, the algorithm incorporates <strong className="text-slate-900 dark:text-white">three automated fallback mechanisms</strong>:
-                        </p>
-                        <div className="space-y-4">
-                            <FallbackCard
-                                number="1"
-                                scenario="Estimating Missing Lifecycle Data"
-                                scenarioDetail="A manufacturer provides direct tailpipe emissions (est_co2_per_100km) but lacks total lifecycle emission data."
-                                resolution="The algorithm estimates lifecycle emissions by multiplying tailpipe emissions per 100km by a factor of 10. This bridges the gap between direct emissions and indirect emissions associated with power grids and fuel refinement, based on broader dataset averages."
-                            />
-                            <FallbackCard
-                                number="2"
-                                scenario="Handling Completely Missing or Invalid Data"
-                                scenarioDetail="A vehicle record contains zero emissions data, or the provided data is in an invalid format (e.g., text instead of numerical)."
-                                resolution="The algorithm assigns a default score of 1 (worst case). This conservative default prevents system failure while safely assuming the highest environmental impact when data transparency is lacking."
-                            />
-                            <FallbackCard
-                                number="3"
-                                scenario="Clamping Out-of-Bounds Data"
-                                scenarioDetail="A vehicle's emissions fall significantly outside the standard 100–250g range (e.g., a hyper-efficient EV emitting 50g, or a heavy-duty truck emitting 400g)."
-                                resolution="The algorithm applies strict minimum and maximum caps. The score is hard-clamped so it can never fall below 1 or exceed 20, ensuring the scale remains mathematically intact."
-                            />
-                        </div>
-                    </SectionCard>
+
 
                     {/* Data Sources footer */}
                     <div className="text-center pt-4 pb-8">

@@ -10,6 +10,11 @@ import CarPricing from './components/CarPricing';
 import Methodology from './components/Methodology';
 import QuickLinks from './components/QuickLinks';
 import AIChatflow from './components/AIChatflow';
+import GreenwashingDashboard from './components/GreenwashingDashboard';
+import ClaimScanner from './components/ClaimScanner';
+import GreenCompare from './components/GreenCompare';
+import CommunityReports from './components/CommunityReports';
+import AdminPanel from './components/AdminPanel';
 import { AuthProvider } from './context/AuthContext';
 
 const Home = () => (
@@ -50,6 +55,11 @@ function App() {
               <Route path="/pricing" element={<CarPricing />} />
               <Route path="/methodology" element={<Methodology />} />
               <Route path="/quick-links" element={<QuickLinks />} />
+              <Route path="/greenwashing" element={<GreenwashingDashboard />} />
+              <Route path="/claim-scanner" element={<ClaimScanner />} />
+              <Route path="/green-compare" element={<GreenCompare />} />
+              <Route path="/community-reports" element={<CommunityReports />} />
+              <Route path="/admin" element={<AdminPanel />} />
             </Routes>
           </main>
           <Footer />
