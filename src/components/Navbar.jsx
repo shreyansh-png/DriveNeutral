@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sun, Moon, Leaf, Menu, X, LogIn, LogOut, MapPin, IndianRupee, Sparkles } from 'lucide-react';
+import { Sun, Moon, Leaf, Menu, X, LogIn, LogOut, MapPin, IndianRupee, Sparkles, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import LoginModal from './LoginModal';
@@ -16,6 +16,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
         { name: 'Compare', path: '/compare' },
         { name: 'Calculator', path: location.pathname === '/' ? '#calculator' : '/#calculator' },
         { name: 'Savings', path: location.pathname === '/' ? '#savings' : '/#savings' },
+        { name: 'Greenwashing', path: '/greenwashing' },
         { name: 'Quick Links', path: '/quick-links' },
         ...(user ? [{ name: 'Car Pricing', path: '/pricing', highlight: true }] : []),
     ];
